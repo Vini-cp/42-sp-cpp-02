@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 01:01:46 by coder             #+#    #+#             */
-/*   Updated: 2022/02/18 01:53:16 by coder            ###   ########.fr       */
+/*   Updated: 2022/02/18 14:57:40 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Fixed {
 
 	private:
 
-		int					_numberValue;
+		int					_rawBits;
 		static const int	_fractionalBits = 8;
 
 	public:
