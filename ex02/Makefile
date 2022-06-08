@@ -15,11 +15,11 @@ CFLAGS = -Wall -Wextra -Werror -g -std=c++98 -fsanitize=address
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJ_FOLDER)/%.o: %.cpp
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 	@rm -rf $(OBJ_FOLDER)
