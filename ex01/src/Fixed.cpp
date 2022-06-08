@@ -1,77 +1,93 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Fixed.cpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 01:25:12 by coder             #+#    #+#             */
-/*   Updated: 2022/02/18 16:49:50 by coder            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// Author: vcordeir <vcordeir@student.42sp.org.br>
+// 42 SP
 
-#include "../include/Fixed.hpp"
+#include "../include/Fixed.h"
 
-Fixed::Fixed( void ): _rawBits(0)
+//------------------------------------------------------------------------------
+
+Fixed::Fixed( void ): mRawBits( 0 )
 {
-	std::cout << "Default constructor called" << std::endl;
+    std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed( int const intNumber )
+//------------------------------------------------------------------------------
+
+Fixed::Fixed( int const pNumber )
 {
-	std::cout << "Int constructor called" << std::endl;
-	_rawBits = intNumber << _fractionalBits;
+    std::cout << "Int constructor called" << std::endl;
+    mRawBits = pNumber << msFractionalBits;
 }
 
-Fixed::Fixed( float const floatNumber )
+//------------------------------------------------------------------------------
+
+Fixed::Fixed( float const pNumber )
 {
-	std::cout << "Float constructor called" << std::endl;
-	_rawBits = roundf(floatNumber * (1 << _fractionalBits));
+    std::cout << "Float constructor called" << std::endl;
+    mRawBits = roundf( pNumber * ( 1 << msFractionalBits ) );
 }
-	
-Fixed::Fixed( const Fixed &fxp )
+
+//------------------------------------------------------------------------------
+
+Fixed::Fixed( const Fixed& prFixedPoint )
 {
-	std::cout << "Copy constructor called" << std::endl;
-	_rawBits = fxp.getRawBits();
+    std::cout << "Copy constructor called" << std::endl;
+    *this = prFixedPoint;
 }
+
+//------------------------------------------------------------------------------
 
 Fixed::~Fixed( void )
 {
-	std::cout << "Destructor called" << std::endl;
+    std::cout << "Destructor called" << std::endl;
 }
 
-Fixed	&Fixed::operator=( const Fixed &fxp )
+//------------------------------------------------------------------------------
+
+Fixed& Fixed::operator=( const Fixed& prFixedPoint )
 {
-	std::cout << "Copy assignment operator called " << std::endl;
-	if(this == &fxp)
-		return (*this);
-	_rawBits = fxp.getRawBits();
-	return (*this);
+    std::cout << "Copy assignment operator called" << std::endl;
+
+    if ( this == &prFixedPoint ) return *this;
+
+    mRawBits = prFixedPoint.getRawBits();
+    return *this;
 }
 
-std::ostream	&operator<<( std::ostream &os, const Fixed &fxp )
+//------------------------------------------------------------------------------
+
+int	Fixed::getRawBits( void ) const
 {
-	os << fxp.toFloat();
-	return (os);
+    std::cout << "getRawBits member function called" << std::endl;
+    return mRawBits;
 }
 
-int		Fixed::getRawBits( void ) const
+//------------------------------------------------------------------------------
+
+void Fixed::setRawBits( int const pRawBits )
 {
-	std::cout << "getRawBits member function called" << std::endl;
-	return (_rawBits);
+    mRawBits = pRawBits;
 }
 
-void	Fixed::setRawBits( int const raw )
+//------------------------------------------------------------------------------
+
+float Fixed::toFloat( void ) const
 {
-	_rawBits = raw;
+    return ( (float) mRawBits / ( 1 << msFractionalBits ) );
 }
 
-float	Fixed::toFloat( void ) const
+//------------------------------------------------------------------------------
+
+int Fixed::toInt( void ) const
 {
-	return ((float) _rawBits / (1 << _fractionalBits));
+    return ( mRawBits >> msFractionalBits );
 }
 
-int		Fixed::toInt( void ) const
+//------------------------------------------------------------------------------
+
+std::ostream& operator<<( std::ostream& os, const Fixed& prFixedPoint )
 {
-	return (_rawBits >> _fractionalBits);
+    os << prFixedPoint.toFloat();
+    return os;
 }
+
+//------------------------------------------------------------------------------
