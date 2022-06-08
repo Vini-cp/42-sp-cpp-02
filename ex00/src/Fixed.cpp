@@ -1,49 +1,55 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Fixed.cpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 01:25:12 by coder             #+#    #+#             */
-/*   Updated: 2022/02/18 14:56:02 by coder            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// Author: vcordeir <vcordeir@student.42sp.org.br>
+// 42 SP
 
-#include "../include/Fixed.hpp"
+#include "../include/Fixed.h"
 
-Fixed::Fixed( void ): _rawBits(0)
+//------------------------------------------------------------------------------
+
+Fixed::Fixed( void ): mRawBits( 0 )
 {
-	std::cout << "Default constructor called" << std::endl;
+    std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed( const Fixed &fxp )
+//------------------------------------------------------------------------------
+
+Fixed::Fixed( const Fixed& prFixedPoint )
 {
-	std::cout << "Copy constructor called" << std::endl;
-	_rawBits = fxp.getRawBits();
+    std::cout << "Copy constructor called" << std::endl;
+    *this = prFixedPoint;
 }
+
+//------------------------------------------------------------------------------
 
 Fixed::~Fixed( void )
 {
-	std::cout << "Destructor called" << std::endl;
+    std::cout << "Destructor called" << std::endl;
 }
 
-Fixed	&Fixed::operator=( const Fixed &fxp )
+//------------------------------------------------------------------------------
+
+Fixed& Fixed::operator=( const Fixed& prFixedPoint )
 {
-	std::cout << "Copy assignment operator called " << std::endl;
-	if(this == &fxp)
-		return (*this);
-	_rawBits = fxp.getRawBits();
-	return (*this);
+    std::cout << "Copy assignment operator called" << std::endl;
+
+    if ( this == &prFixedPoint ) return *this;
+
+    mRawBits = prFixedPoint.getRawBits();
+    return *this;
 }
 
-int		Fixed::getRawBits( void ) const
+//------------------------------------------------------------------------------
+
+int	Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
-	return (_rawBits);
+    std::cout << "getRawBits member function called" << std::endl;
+    return mRawBits;
 }
 
-void	Fixed::setRawBits( int const raw )
+//------------------------------------------------------------------------------
+
+void Fixed::setRawBits( int const pRawBits )
 {
-	_rawBits = raw;
+    mRawBits = pRawBits;
 }
+
+//------------------------------------------------------------------------------
