@@ -6,7 +6,7 @@
 
 //------------------------------------------------------------------------------
 
-Fixed::Fixed( void ): mRawBits( 0 )
+Fixed::Fixed( void ) : mRawBits( 0 )
 {
     std::cout << "Default constructor called" << std::endl;
 }
@@ -51,6 +51,7 @@ Fixed& Fixed::operator=( const Fixed& prFixedPoint )
     if ( this == &prFixedPoint ) return *this;
 
     mRawBits = prFixedPoint.getRawBits();
+
     return *this;
 }
 
@@ -210,7 +211,7 @@ const Fixed& Fixed::min( const Fixed& prFixedPoint1, const Fixed& prFixedPoint2 
 
 //------------------------------------------------------------------------------
 
-int	Fixed::getRawBits( void ) const
+int Fixed::getRawBits( void ) const
 {
     std::cout << "getRawBits member function called" << std::endl;
     return mRawBits;

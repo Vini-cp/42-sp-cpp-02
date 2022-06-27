@@ -50,7 +50,6 @@ private:
 
     int mRawBits;
     static const int msFractionalBits = 8;
-
 };
 
 std::ostream& operator<<( std::ostream& os, const Fixed& prFixedPoint );
