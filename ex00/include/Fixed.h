@@ -2,9 +2,9 @@
 // 42 SP
 
 #ifndef FIXED_H
-# define FIXED_H
+#define FIXED_H
 
-# include <iostream>
+#include <iostream>
 
 class Fixed
 {
