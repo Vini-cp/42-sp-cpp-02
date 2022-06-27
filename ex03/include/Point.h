@@ -2,9 +2,9 @@
 // 42 SP
 
 #ifndef POINT_H
-# define POINT_H
+#define POINT_H
 
-# include "Fixed.h"
+#include "Fixed.h"
 
 class Point
 {
@@ -27,7 +27,6 @@ private:
 
     Fixed X;
     Fixed Y;
-
 };
 
 std::ostream& operator<<( std::ostream& os, const Point& prPoint );

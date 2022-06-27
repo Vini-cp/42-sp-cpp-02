@@ -22,7 +22,5 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 
     if ( A1 == 0 || A2 == 0 || A3 == 0 ) return false;
 
-    if ( A1 + A2 + A3 == triangleArea ) return true ;
-
-    return false;
+    return ( A1 + A2 + A3 == triangleArea );
 }

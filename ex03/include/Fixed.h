@@ -2,7 +2,7 @@
 // 42 SP
 
 #ifndef FIXED_H
-# define FIXED_H
+#define FIXED_H
 
 #include <iostream>
 
@@ -50,7 +50,6 @@ private:
 
     int mRawBits;
     static const int msFractionalBits = 8;
-
 };
 
 std::ostream& operator<<( std::ostream& os, const Fixed& prFixedPoint );
